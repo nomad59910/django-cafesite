@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+
+{% block include %}
+    <link rel="stylesheet"  href="{% static 'style/index.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/news.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/nav-menu.css' %}">
+{% endblock %}
+
+
+{% block title %}
+    Новости
+{% endblock %}
+
+
+{% block image %}
+    <div class="block-top-image text-center"  style="background-image: url(/media/main/news.png);">
+        <div class="block-top-image-cell">
+            <div class="block-inline">
+                <div class="block-top-image-cell-information-text">
+                    {% trans "сенджу кафе японской кухни" %}
+                </div>
+                <div>
+                    <div class="head-line_">
+
+                    </div>
+                </div>
+                <div class="block-top-image-cell-category">
+                    {% trans "НОВОСТИ" %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <script type="text/template" id="news-template">
+
+        <% items.forEach(function(item) { %>
+
+        <div class="container-fluid container-news_">
+            <div class="row">
+                <div class="col-md-1 visible-md-block visible-lg-block">
+                    <div class="news-date_">
+                        <h5 class="news-date-month"><%-item.month%></h5>
+                        <h2 class="news-date__"><%-item.date_left%></h2>
+                    </div>
+                </div>
+
+                <div class="col-md-6 text-center-small">
+                    <img src="<%-item.image%>" class="img-responsive block-inline">
+                </div>
+
+                <div class="col-md-5 text-center-small">
+                    <a href='<%- item.url %>'>
+                        <h3><%-item.title%></h3>
+                    </a>
+
+                    <div>
+                        <%-item.text%>
+                    </div>
+
+                    <div class="new-text-bottom visible-xs-block visible-sm-block">
+                        <div class="block-inline pull-left">
+                            <i class="fa fa-calendar" aria-hidden="true"></i><%-item.date%>
+                        </div>
+
+                        <a href='<%- item.url %>' class="block-inline pull-right read-more">
+                            {% trans "Читать далее" %}
+                        </a>
+                    </div>
+
+                    <div class="new-text-bottom visible-md-block visible-lg-block">
+                        <a href='<%- item.url %>' class="block-inline pull-left read-more">
+                            {% trans "Читать далее" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="news-line container-news_">
+        </div>
+
+        <% }); %>
+    </script>
+{% endblock %}
+
+
+{% block include_js %}
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/lodash.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/generate_news.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/nav-menu.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/fly_basket.js' %}"></script>
+{% endblock %}
+
+{% block lang_hide %}
+    <script type="text/javascript">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+
+        if('{{LANGUAGE_CODE}}' != 'ru')
+        {
+            window.location.replace("/");
+        }
+
+    </script>
+{% endblock %}

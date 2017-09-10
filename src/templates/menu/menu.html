@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+
+{% block include %}
+    {% load index %}
+    <link rel="stylesheet"  href="{% static 'style/index.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/menu.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/nav-menu.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/detail_dish.css' %}">
+{% endblock %}
+
+
+{% block title %}
+    {% trans "Меню" %}
+{% endblock %}
+
+{% block block_onresize %}
+    var width = $(window).width();
+    if(width <= 300){
+        $('#float-block').css({'width':300});
+    }
+    else if (width <= 730){
+        $('#float-block').css({'width':width});
+    }
+    else{
+        $('#float-block').css({'width':width - 50});
+    }
+{% endblock %}
+
+
+{% block image %}
+    <div class="block-top-image text-center" style="background-image: url(/media/menu/menu.png);">
+        <div class="block-top-image-cell">
+            <div class="block-inline">
+                <div class="block-top-image-cell-information-text">
+                    {% trans "сенджу кафе японской кухни" %}
+                </div>
+                <div>
+                    <div class="head-line_">
+
+                    </div>
+                </div>
+                <div class="block-top-image-cell-category">
+                    {% trans "МЕНЮ" %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="content-dish">
+        <div class="">
+            <div class="">
+                <div class="content-dish-filter">
+                    <div class="content-dish-filter-block" class="visible-xs-block">
+                        <div>
+
+                            <div class="dish-type text-center">
+                                <h3 class="text-left title-text">{% trans "Типы блюд" %}</h3>
+                                <div class="block-inline text-center line-undo-type-or-ingredients"></div>
+
+                                <div id="type_dish">
+                                    <hr>
+                                    {% for dish_type in dish_types %}
+                                        <div class="block-type-dish">
+                                            <div class="block-inline pull-left block-type-dish__">
+                                                <input type="checkbox" checked value="{{dish_type.id}}" class="type-dish" id="{{dish_type.id}}">
+                                                <label for="{{dish_type.id}}" class="top-type">{{dish_type.name}}</label><br>
+                                            </div>
+
+                                            <div class="block-inline pull-right">
+                                                <button class="only" id="{{dish_type.id}}">
+                                                    {% trans "только" %}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    <hr>
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+
+                            <div class="dish-ingredients text-center ">
+                                <h3 class="text-left">{% trans "Ингредиенты" %}</h3>
+                                <div class="block-inline text-center line-undo-type-or-ingredients"></div>
+
+                                <hr>
+                                {% for key, value in ingredients.items %}
+                                    <div class="block-ingredient">
+                                        <div class="block-ingredient_">
+                                            <input class="ingredient_type pull-left" type="checkbox" checked value="{{key}}" id="{{key}}">
+                                            <label for="{{key}}" class="ingredient-type-label pull-left" >{{key}}</label>
+
+                                            <div class="arrow pull-right" name="{{ingredient.type_}}">
+                                                <div class="up-or-down" name="{{ingredient.type_}}">
+                                                    <i class="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                                                    <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="ingredients">
+                                            {% for i in value %}
+                                                <div class="ingred">
+                                                    <input class="{{key}} ingredient-type-in pull-left" type="checkbox" checked value="{{i.id}}" id="ingred{{i.id}}">
+                                                    <label class="ingredient-type-in-label pull-left" for="ingred{{i.id}}">{{i.name}}</label><br>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <hr>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-dish-dishs">
+                <div class="container-fluid">
+                    <div class="row text-center" id="data_dish">
+
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content-dish">
+                <button type="button" class="close close-dish" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        &times;
+                    </span>
+                </button>
+
+                <div class="container-fluid modal-header-dish">
+                    <div class="row" id="block-content-dish">
+                        <div class="col-md-7 modal-header-dish-image text-center">
+                            <img id="image_dish" src="/media/photo/0-i9rRUfsAyD2bXf9E-_1.jpg" class="img-responsive">
+                        </div>
+                        <div class="col-md-5 modal-header-dish-imformation">
+
+                            <div class="col-md-12 padding-none modal-header-dish-imformation-discription">
+                                <div class="col-md-12 padding-none">
+                                    <h1 id="title_dish" class="text-center"></h1>
+                                </div>
+                                <div class="col-md-12 padding-none">
+                                    <h3 class="text-left">{% trans "Описание" %}</h3>
+                                    <p id="description"></p>
+                                    <p id="description-small"></p>
+                                    <button id="description-small-btn">Далее</button>
+                                </div>
+                                <div class="col-md-12 padding-none">
+                                    <h3 class="text-left">{% trans "Ингредиенты" %}</h3>
+                                    <p id="ingredients_dish"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12 padding-none">
+                                <div class="col-md-6 col-xs-6 col-sm-6 padding-none prev-detail-count">
+                                   <div class="col-md-12 padding-none">
+                                       <div class="col-md-4 col-xs-4 col-sm-4 padding-none">{% trans "Цена" %}:</div>
+                                       <div class="col-md-8 col-xs-8 col-sm-8 padding-none"><span id="price_dish"></span> <span class="rur">a</span></div>
+                                   </div>
+                                   <div class="col-md-12 padding-none">
+                                       <div class="col-md-4 col-xs-4 col-sm-4 padding-none">{% trans "Кол-во" %}:</div>
+                                       <div class="col-md-8 col-xs-8 col-sm-8 padding-none">
+                                            <div class="modal-dish-control">
+                                                <button id="minus">
+                                                    <i class="fa fa-minus-circle font-18" aria-hidden="true"></i>
+                                                </button>
+
+                                                <input onkeypress='if(event.keyCode<48 || event.keyCode > 57)event.returnValue=false' style='margin-left: 10px; margin-right: 10px; width: 35px; text-align:center; border: none; display: inline-block;' id='count_dish' type='text' name='num' min='1' value='1' Disabled>
+
+                                                <button id="plus">
+                                                    <i class="fa fa-plus-circle font-18" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                       </div>
+                                   </div>
+                                   <div class="col-md-12 padding-none">
+                                       <div class="col-md-4 col-xs-4 col-sm-4 padding-none">{% trans "Итог" %}:</div>
+                                       <div class="col-md-8 col-xs-8 col-sm-8 padding-none"><span id="result_price_dish"></span> <span class="rur">a</span></div>
+                                   </div>
+                                </div>
+
+                                <div class="col-md-6 col-xs-6 col-sm-6 detail-prev-basket">
+                                    <div class="buy text-center">
+                                        <a href="/basket/" id="go-to-basket">
+                                            {% trans "Перейти в корзину" %}
+                                             ( <p1 id="fly_basket_popup">0 ₽ </p1> )
+                                        </a>
+
+                                        <button id="add_pop_basket" value="1">
+                                            {% trans "Добавить в корзину" %}
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <i id="load-icon" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/template" id="menu-template">
+        <% items.forEach(function(item) { %>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 block-item-dish">
+
+                <div class="block-item-dishs">
+                    <a href='#' class='big-link' class="menu-button" data-toggle="modal" data-target="#myModal1" id=<%-item.id%>>
+                        <img style='overflow:hidden;' src=<%-item.image%>  class="img-responsive">
+                    </a>
+                    <div>
+                        <h5 class="prev-name-item-dishs">
+                            <%-item.name%> / <%-item.price%> <span class="rur">a</span>
+                        </h5>
+                    </div>
+
+                    <button type="button" class="prev-button-item-dishs big-link" data-toggle="modal" data-target="#myModal1" value=<%-item.id%> id=<%-item.id%>>
+                        {% trans "Добавить в корзину" %}
+                    </button>
+                </div>
+
+            </div>
+        <% }); %>
+    </script>
+{% endblock %}
+
+
+{% block include_js %}
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/lodash.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/filter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/nav-menu.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/fly_basket.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/pop_up_dish.js' %}"></script>
+{% endblock %}

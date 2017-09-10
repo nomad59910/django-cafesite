@@ -1,0 +1,278 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+
+{% block include %}
+    <link rel="stylesheet"  href="{% static 'style/index.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/news.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/nav-menu.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/detail_dish.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/basket.css' %}">
+{% endblock %}
+
+{% block title %}
+    {% trans "Корзина" %}
+{% endblock %}
+
+{% block image %}
+    <div class="block-top-image text-center"  style="background-image: url(/media/main/basket1.jpg);">
+        <div class="block-top-image-cell">
+            <div class="block-inline">
+                <div class="block-top-image-cell-information-text">
+                    {% trans "сенджу кафе японской кухни" %}
+                </div>
+                <div>
+                    <div class="head-line_">
+
+                    </div>
+                </div>
+                <div class="block-top-image-cell-category">
+                    {% trans "КОРЗИНА" %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="basket-content">
+    </div>
+
+    <div class="container-fluid container-basket">
+        <form action="./" method="post">
+            <div class="row ">
+                <div class="col-xs-12 text-center">
+                    <h3>
+                        {% trans "Оформить заказ" %}:
+                    </h3>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-sm-5 form-order-col">
+                            <div class="col-sm-12 none-padding">
+            					<div class="text-left label-block">
+            						<label class="vertical-sub" for="{{ form.name.id_for_label }}">
+                                        <span>{{ form.name.label}}</span>
+                                    </label>
+                                    <span class="text-red vertical-sub">*</span>
+                                    <span class="vertical-sub">:</span>
+                                    <span class="inline-block text-red vertical-sub">
+                                        {{ form.name.errors }}
+                                    </span>
+            					</div>
+            					<div class="input-block">
+            						{{ form.name }}
+            					</div>
+                            </div>
+                            <div class="col-sm-12 none-padding">
+                                <div class="text-left label-block">
+            						<label class="vertical-sub" for="{{ form.phone_number.id_for_label }}">
+                                        {{ form.phone_number.label}}
+                                    </label>
+                                    <span class="text-red vertical-sub">*</span>
+                                    <span class="vertical-sub">:</span>
+                                    <span class="inline-block text-red">
+                                        {{ form.phone_number.errors }}
+                                    </span>
+            					</div>
+                                <div class="input-block">
+            						{{ form.phone_number }}
+            					</div>
+                            </div>
+                            <div class="col-sm-12 none-padding">
+                                <div class="text-left label-block">
+            						<label class="vertical-sub" for="{{ form.date.id_for_label }}">
+                                        {{ form.date.label}}
+                                    </label>
+                                    <span class="text-red vertical-sub">*</span>
+                                    <span class="vertical-sub">:</span>
+                                    <span class="inline-block text-red vertical-sub">
+                                        {{ form.date.errors }}
+                                    </span>
+            					</div>
+                                <div class="input-block">
+                                    {{ form.date }}
+                                </div>
+                            </div>
+                            <div class="col-sm-12 none-padding">
+                                <div class="text-left label-block">
+                                    <label class="vertical-sub" for="{{ form.time.id_for_label }}">
+                                        {{ form.time.label}}
+                                    </label>
+                                    <span class="text-red vertical-sub">*</span>
+                                    <span class="vertical-sub">:</span>
+                                    <span class="inline-block text-red vertical-sub">
+                                        {{ form.time.errors }}
+                                    </span>
+                                </div>
+                                <div class="input-block">
+                                    {{ form.time }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-7 form-order-col">
+                            <div class="text-left label-block">
+                                <label class="vertical-sub" for="{{ form.comment.id_for_label }}">
+                                    {{ form.comment.label }}
+                                </label>
+                                <span class="text-red vertical-sub">*</span>
+                                <span class="vertical-sub">:</span>
+                                <span class="inline-block text-red vertical-sub">
+                                    {{ form.comment.errors }}
+                                </span>
+                            </div>
+                            <div class="input-block">
+                                {{ form.comment }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 text-right result-order">
+                    {% trans "Итог" %}: <span id="summ"></span>
+                </div>
+
+                <div class="col-xs-12 text-right">
+                    <div>
+                        <a href="{% url 'menu:menu' %}" class="block-inline go-menu-block">
+                            {% trans "Назад в Меню" %}
+                        </a>
+
+                        <button type="submit" data-reveal-id="myModal1" class="blink block-inline сontents-block">
+                            {% trans "Оформить заказ" %}
+                        </button>
+    				</div>
+                </div>
+            </div>
+            {% csrf_token %}
+        </form>
+    </div>
+
+    <!-- {{ form.name.errors }}
+    <div class="col-md-4 col-sm-4 text-left">
+        <label for="{{ form.name_client.id_for_label }}">Имя</label>
+    </div>
+    <div class="col-md-8 col-sm-8 input-block">
+    </div> -->
+
+
+    <!-- <form action="./" method="post">
+        <input type="submit" value="Submit" />
+        {{ form }} -->
+
+    <div class="modal fade" id="order-done" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="text-center">
+                <i class="fa fa-check" aria-hidden="true"></i>
+            </div>
+            <div class="text-center">
+                {% trans "Ваш заказ оформлен." %}
+            </div>
+        </div>
+    </div>
+
+    <script type="text/template" id="basket-template">
+        <div class="container-fluid hidden-xs container-basket_">
+            <div class="row">
+                <div class="col-xs-5 col-sm-2 col-middle col-xs-height">
+                </div>
+
+                <div class="col-xs-7 col-sm-10 col-middle col-xs-height block-inform-dish block-inform-dish_">
+                    <div class="row row-same-height">
+                        <div class="col-xs-9 col-sm-11 col-middle col-xs-height">
+                            <div class="row">
+                                <div class="col-sm-3 text-center display-block-xs">
+                                    {% trans "Название"%}
+                                </div>
+
+                                <div class="col-sm-3 text-center display-block-xs">
+                                    {% trans "Цена"%}
+                                </div>
+
+                                <div class="col-sm-3 text-center display-block-xs">
+                                    {% trans "Кол-во"%}
+                                </div>
+
+                                <div class="col-sm-3 text-center display-block-xs">
+                                    {% trans "Стоимость"%}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-xs-3 col-sm-1 text-center col-middle col-xs-height">
+                            {% trans "Удалить"%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="line-basket">
+        </div>
+
+
+        <div class="container-fluid container-basket_">
+    		<% items.forEach(function(item) { %>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-2 col-middle col-xs-height">
+                        <img src='<%-item.image%>' class="img-responsive block-inline">
+                    </div>
+
+                    <div class="col-xs-8 col-sm-10 col-middle col-xs-height block-inform-dish">
+                        <div class="row row-same-height">
+                            <div class="col-xs-11 col-sm-11 col-middle col-xs-height">
+                                <div class="row">
+                                    <div class="col-sm-3 text-center display-block-xs padtop4">
+                                        <div class="visible-xs-inline-block">
+                                            {% trans "Название"%}:
+                                        </div>
+                                        <%-item.name%>
+                                    </div>
+
+                                    <div class="col-sm-3 text-center display-block-xs padtop4">
+                                        <div class="visible-xs-inline-block">
+                                            {% trans "Цена"%}:
+                                        </div>
+                                        <%-item.price%> <span class="rur">a</span>
+                                    </div>
+                                    <div class="col-sm-3 text-center display-block-xs">
+                                        <div class="visible-xs-inline-block">
+                                            {% trans "Кол-во"%}:
+                                        </div>
+                                        <input type="number" name="quantity" min="1"  name='num' value='<%-item.quantity%>' style='width: 50px; text-align:center' id='<%-item.id%>'  class='count_dish'max="50" >
+                                    </div>
+                                    <div class="col-sm-3 text-center display-block-xs padtop4">
+                                        <div class="visible-xs-inline-block">
+                                            {% trans "Стоимость"%}:
+                                        </div>
+                                        <%-item.price * item.quantity%> <span class="rur">a</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-1 col-sm-1 text-center col-middle col-xs-height">
+                                <button class='remove' value='<%-item.id%>' style='color:red; font-size: 18px; font-weight: bold; border:none; background:none;'>
+                                    <i class="fa fa-times remove-btm" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="hr-block">
+
+    		<% }); %>
+        </div>
+	</script>
+{% endblock %}
+
+{% block include_js %}
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/lodash.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/nav-menu.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/fly_basket.js' %}"></script>
+    <!-- <script type="text/javascript" src="{% static 'js/popupdone.js' %}"></script> -->
+    <script type="text/javascript" src="{% static 'js/basket_view.js' %}"></script>
+{% endblock %}

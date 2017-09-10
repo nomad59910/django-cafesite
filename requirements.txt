@@ -1,0 +1,12 @@
+dj-database-url==0.4.1
+dj-static==0.0.6
+Django==1.9
+django-filter==0.15.3
+django-modeltranslation==0.12
+django-toolbelt==0.0.1
+django-wysiwyg-redactor==0.4.9.1
+djangorestframework==3.5.0
+Markdown==2.6.7
+pillow==4.2.1
+gunicorn
+static3==0.7.0

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    {% load i18n %}
+    {% load index %}
+    {% load get_attr %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+	<title>{% trans "Сенджю кафе японской кухни" %}</title>
+
+    <link rel="stylesheet"  href="{% static 'style/hover.css' %}" media="all">
+	<link rel="stylesheet"  href="{% static 'bootstrap/css/bootstrap.css' %}">
+	<link rel="stylesheet"  href="{% static 'font-awesome/css/font-awesome.css' %}">
+	<link rel="stylesheet"  href="{% static 'style/index.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/detail_dish.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/showup.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+</head>
+
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="row-same-height row-top">
+                <div class="col-md-4 col-xs-4 text-left col-middle col-xs-height">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+
+                    {% for language in languages %}
+
+                    <a href="/setlang/?language={{ language.code }}" class="lang-item {% if language.code == LANGUAGE_CODE %} select {% endif %}">
+                        {% if forloop.first %}
+                            РУССКИЙ
+                        {% else %}
+                            ENGLISH
+                        {% endif %}
+                    </a>
+
+                    <a href="/setlang/?language={{ language.code }}" class="lang-item-small {% if language.code == LANGUAGE_CODE %} select {% endif %}">
+                        {% if forloop.first %}
+                            РУ
+                        {% else %}
+                            EN
+                        {% endif %}
+                    </a>
+
+                    {% endfor %}
+                </div>
+
+                <div class="col-md-4 col-xs-4 text-center col-middle col-xs-height top-hiden-col">
+                    <div class="icon-block block-inline">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </div>
+                    <div class="text-block block-inline">8 (836) 232-58-86</div>
+                </div>
+
+                <div class="col-md-4 col-xs-4 text-right col-middle col-xs-height">
+                    <div class="cart-block">
+                        <a class="head-top-block-cart-div-table-cart" href="{% url 'basket:ordering' %}">
+                            <div class="icon-block block-inline"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+
+                            <div class="text-block block-inline">
+                                    <div class="block-inline top-hiden-col">{% trans "ВАШ ЗАКАЗ" %} (</div>
+                                        <p1 id="fly_basket">0 <span class='rur'>a</span></p1>
+                                    <div class="block-inline top-hiden-col">)</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="row-same-height display-logo">
+                <div class="col-md-12 col-xs-12 text-center col-middle col-xs-height">
+                    <div class="head-label-block-top">
+                        {% trans "кафе японской кухни" %}
+                    </div>
+                    <div class="head-label-block-down">
+                        {% trans "СЕНДЖЮ" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <nav class="navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header text-center">
+                <button type="button" class="navbar-toggle collapsed text-center pull-left button-nav" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"></a>
+            </div>
+
+            <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
+                <div class="block-inline">
+                    <ul class="nav navbar-nav text-center">
+                        <li><a class="navigation-item select navigation-item-main" href="{% url 'index' %}">{% trans "ГЛАВНАЯ" %}</a></li>
+                        <li><a class="navigation-item navigation-item-main" id="navigation-item-news" href="{% url 'news:article-list' %}">{% trans "НОВОСТИ" %}</a></li>
+                        <li><a class="navigation-item navigation-item-main" href="#about">{% trans "О НАС" %}</a></li>
+                        <li><a class="navigation-item navigation-item-main navigation-item-main-select" href="{% url 'menu:menu' %}">{% trans "МЕНЮ" %}</a></li>
+                        <li><a class="navigation-item navigation-item-main" href="#connection_and_map">{% trans "КОНТАКТЫ" %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="carousel-example-generic" class="carousel slide carousel-bg" data-ride="carousel">
+		<div class="carousel-inner full-width" role="listbox">
+			{% for img in slide_img %}
+
+				{% if forloop.first %}
+					<div class="item active" style="background-image: url(../media/{{ img.image }});">
+				{% else %}
+					<div class="item" style="background-image: url(../media/{{ img.image }});">
+				{% endif %}
+
+						<div class="carousel-caption">
+                            <div class="row">
+                                <div class="frame-menu">
+								    <a href="{% url 'menu:menu' %}"  class="button_slide">{% trans "ПЕРЕЙТИ В МЕНЮ" %}</a>
+							    </div>
+                            </div>
+						</div>
+
+						<div class="carousel-caption carousel-caption-image text-image text-center">
+							<div class="block-inline text-center carousel-text">{{img.text}}</div>
+						</div>
+					</div>
+
+
+				{% if forloop.last %}
+					</div>
+					{% if not forloop.first %}
+						<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="height: 100%">
+							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+
+						<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" style="height: 100%">
+							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					{% endif %}
+				{% endif %}
+
+			{% endfor %}
+        </div>
+	</div>
+
+    <hr>
+
+    <div class="dish-block">
+        <div class="container block-1040px">
+            <div class="row row-dish">
+                <div class="col-md-12 text-center">
+                    <div class="block-title">
+                        {% trans "БЛЮДА" %}
+                    </div>
+
+                    <div class="line_block">
+                        <div class="line"></div>
+                        <div class="icon_line"><i class="fa fa-stop icon_l" aria-hidden="true"></i></div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+
+                <div class="row margin-none">
+                {% for d in dishs %}
+                    <div class="col-md-6 col-sm-12 col-xs-12 prev-dish-block">
+
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-prev-menu-{{forloop.counter}} col-prev-menu">
+                            <img src="/media/{{d.dish.image}}" alt="" class="image-dish img-responsive">
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="visible-sm-block dish-indentation"></div>
+                            <div class="dish-title">{{d.dish.name}}</div>
+                            <div class="dish-text">{{d.dish_text}}</div>
+                            <div class="dish-price">{{d.dish.price}} <span class='rur'>a</span></i>
+							</div>
+                            <div class="dish-button-block">
+                                <button type="button" class="prev-button-item-dishs dish-button big-link hvr-fade" data-toggle="modal" data-target="#myModal1" value={{d.dish.id}} id={{d.dish.id}}>
+                                    {% trans "Добавить в корзину" %}
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <div class="visible-xs-inline-block">
+                             <div class="height: 60px;"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <a href="{% url 'menu:menu' %}">
+                    <button class="see-all">{% trans "СМОТРЕТЬ ВСЕ БЛЮДА" %}</button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <div class="gray-block">
+        <div class="container block-1040px" id="about">
+            <div class="row row-dish">
+                <div class="col-md-12 text-center">
+                    <div class="block-title">
+                        {% trans "O НАС" %}
+                    </div>
+
+                    <div class="line_block">
+                            <div class="line"></div>
+                            <div class="icon_line"><i class="fa fa-stop icon_l" aria-hidden="true"></i></div>
+                            <div class="line"></div>
+                        </div>
+                </div>
+
+                <div class="col-md-12 about-text">
+                    {% trans "Как известно, истинных ценителей восточной кухни мало.  Именно истинных! А не просто любителей роллов и суши.  Дабы привить вкус в настоящей домашней японской кухне,мы рады предоставить наш богатый ассортмент. Естественно, сколько людей - столько и мненией, а соответственно и вкусов. Однако, разные мнения помогут выбрать для себя что-то свое и тем самым не дадут заблудиться во вкусовой гамме и разнообразии блюд!" %}
+                </div>
+
+                <div class="col-md-12 col-xs-12 text-center about-image">
+                    <img src="/media/main/abuot.png" alt="" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--News-->
+    <div class="container block-1040px" id="news-block">
+        <div class="row">
+
+            <div class="col-md-12 text-center">
+                <div class="block-title">
+                    {% trans "НОВОСТИ" %}
+                </div>
+
+                <div class="line_block">
+                        <div class="line"></div>
+                        <div class="icon_line"><i class="fa fa-stop icon_l" aria-hidden="true"></i></div>
+                        <div class="line"></div>
+                    </div>
+            </div>
+
+            <div class="col-md-12 news-block_">
+                <div class="row">
+
+                    {% if news|index:0 %}
+                        <div class="col-md-6 col-xs-12 text-center">
+                            <img src='/media/{{news|index:0|get_attr:"image"}}' alt="" class="img-responsive block-inline">
+                        </div>
+
+                        <div class="col-md-6 col-xs-12">
+                            <a class="new-title" href="{% url 'news:article' id=news|index:0|get_attr:'id' %}">
+                                <h3>{{news|index:0|get_attr:"title"}}</h3>
+                            </a>
+
+                            <div class="new-text">
+                                {{news|index:0|get_attr:"text"|safe}}
+                            </div>
+
+                            <div class="new-text-bottom">
+                                <div class="block-inline">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>{{news|index:0|get_attr:"date"}}
+                                </div>
+
+                                <a href="{% url 'news:article' id=news|index:0|get_attr:'id' %}" class="block-inline pull-right read-more">
+                                    {% trans "Читать далее" %}
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row">
+                    {% if  news|index:1 %}
+                        <div class="col-md-6 col-xs-12 text-center col-news_">
+                            <img src='/media/{{news|index:1|get_attr:"image"}}' alt="" class="img-responsive block-inline">
+
+                            <a href="{% url 'news:article' id=news|index:1|get_attr:'id' %}">
+							    <h3>{{news|index:1|get_attr:"title"}}</h3>
+						    </a>
+
+                            <div class="new-text">
+                                {{news|index:1|get_attr:"text"|safe}}
+                            </div>
+
+                            <div>
+                                <div class="vertical_date_news block-inline pull-left">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                {{news|index:1|get_attr:"date"}}
+                                </div>
+
+                                <div class="read-next-right block-inline pull-right">
+                                    <a class="read-more" href="{% url 'news:article' id=news|index:1|get_attr:'id' %}">
+                                        <span>
+                                            {% trans "Читать далее" %}
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if  news|index:2 %}
+                        <div class="col-md-6 col-xs-12 text-center padding-bottom: 30px;">
+                            <img src='/media/{{news|index:2|get_attr:"image"}}' alt="" class="img-responsive block-inline">
+
+                            <a href="{% url 'news:article' id=news|index:2|get_attr:'id' %}" class="text-center">
+                                <h3>{{news|index:2|get_attr:"title"}}</h3>
+                            </a>
+
+                            <div class="new-text">
+                                {{news|index:2|get_attr:"text"|safe}}
+                            </div>
+
+                            <div>
+                                <div class="vertical_date_news block-inline pull-left">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    {{news|index:2|get_attr:"date"}}
+                                </div>
+
+                                <div class="read-next-right block-inline pull-right">
+                                    <a class="read-more" href="{% url 'news:article' id=news|index:2|get_attr:'id' %}">
+                                        <span>{% trans "Читать далее" %}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if news|index:0 %}
+			<div class="button_all text-center">
+				<a href="{% url 'news:article-list' %}">
+					<button class="see-all-news">
+                        СМОТРЕТЬ ВСЕ НОВОСТИ
+                    </button>
+				</a>
+			</div>
+            {% else %}
+                <li class="none-news-messenge">
+                    {% trans "Извините, но сейчас новостей нет." %}
+                </li>
+		    {% endif %}
+
+        </div>
+    </div>
+
+    <!--Map-->
+    <div class="container" id="connection_and_map">
+        <div class="row">
+            <div class="visible-sm-block visible-xs-block">
+                <div class="block-map_">
+                    <a name="connection_and_map"></a>
+                    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=4m1eY2XpGpslhmWucFLruhQgt3yd8hCY&amp;width=100%25&amp;height=300&amp;lang=ru_RU&amp;sourceType=constructor&amp;scroll=true"></script>
+                </div>
+
+                <div class="text-center map-contacts">
+                    <h4>{% trans "Режим работы" %}:</h4>
+
+                    <div class="text-prev-futer">{% trans "Понедельник ~ Суббота: 12:00-22:00" %}</div>
+                    <div class="text-prev-futer">{% trans "Воскресение: ВЫХОДНОЙ" %}</div>
+                    <div class="text-prev-futer"></div>
+
+                    <div class="text-center block-line_">
+                        <div class="block-inline block-line__">
+                            <hr class="block-line___">
+                        </div>
+                    </div>
+
+                    <div class="text-prev-futer">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <p1> Example@gmail.com</p1>
+                    </div>
+
+                    <div class="text-prev-futer">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <p1>
+                            {% trans "Медицинская ул.10Б, Йошкар-Ола" %}
+                        </p1>
+                    </div>
+
+                    <div class="text-prev-futer">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <p1>8 (836) 232-58-86</p1>
+                    </div>
+
+                    <div class="text-prev-futer">
+                        <p1>{% trans "СОЦИАЛЬНЫЕ СЕТИ" %}:</p1>
+                        <a class="vk" href="https://new.vk.com/cafe_senju">
+                            <i class="fa fa-vk" aria-hidden="true" fa-2x>
+                            </i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visible-md-block visible-lg-block block-info-work">
+                <div class="block-info-work">
+                    <a name="connection_and_map"></a>
+                    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=MYzdc-SjVXb7_YwWeWPYFTEc-WVtUDBw&amp;width=100%&amp;height=523&amp;lang=ru_RU&amp;sourceType=constructor&amp;scroll=true"></script>
+                </div>
+
+                <div id="block_contact_information">
+                    <h4 class="work-title text-center">{% trans "Режим работы" %}</h4>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="col-md-3 date-work">{% trans "Пн" %}</div>
+                                <div class="col-md-9 date-work date-work-time">12.00-22.00</div>
+
+                                <div class="col-md-3 date-work">{% trans "Вт" %}</div>
+                                <div class="col-md-9 date-work date-work-time">12.00-22.00</div>
+
+                                <div class="col-md-3 date-work">{% trans "Ср" %}</div>
+                                <div class="col-md-9 date-work date-work-time">12.00-22.00</div>
+
+                                <div class="col-md-3 date-work">{% trans "Чт" %}</div>
+                                <div class="col-md-9 date-work date-work-time">12.00-22.00</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="col-md-3 date-work">{% trans "Пт" %}</div>
+                                <div class="col-md-9 date-work date-work-time">12.00-22.00</div>
+
+                                <div class="col-md-3 date-work">{% trans "Сб" %}</div>
+                                <div class="col-md-9 date-work date-work-time">12.00-22.00</div>
+
+                                <div class="col-md-3 date-work">{% trans "Вс" %}</div>
+                                <div class="col-md-9 date-work date-work-time date-work-time-color">{% trans "Выходной" %}</div>
+                            </div>
+                        </div>
+
+                        <div class="date-contact">
+                            <div class="text-prev-futer">
+                                <div class="block-inline block-info-data">
+                                    <i class="fa fa-envelope fa-map-information" aria-hidden="true"></i>
+                                </div>
+                                <p1> Example@gmail.com</p1>
+                            </div>
+
+                            <div class="text-prev-futer">
+                                <div class="block-inline block-info-data">
+                                    <i class="fa fa-map-marker fa-map-information" aria-hidden="true"></i>
+                                </div>
+                                <p1>{% trans "Медицинская ул.10Б, Йошкар-Ола" %}</p1>
+                            </div>
+
+                            <div class="text-prev-futer">
+                                <div class="block-inline block-info-data">
+                                    <i class="fa fa-phone fa-map-information" aria-hidden="true"></i>
+                                </div>
+                                <p1>8 (836) 232-58-86</p1>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Futer-->
+    <div class="container-fluid futer">
+        <div class="container-fluid visible-xs-block visible-sm-block">
+            <div class="row">
+                <div class="row-same-height row-top">
+                    <div class="col-md-12 text-center col-middle col-xs-height">
+                        <div class="icon-block block-inline">
+                            <i class="fa fa-copyright" aria-hidden="true"></i>
+                        </div>
+                        <div class="block-inline">
+                            2016 SENJU CAFE
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid visible-md-block visible-lg-block">
+            <div class="row">
+                <div class="row-same-height row-top">
+                    <div class="col-md-4 col-xs-4 text-left col-middle col-xs-height">
+                        <div class="icon-block block-inline">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </div>
+                        <div class="text-block block-inline">8 (836) 232-58-86</div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-12 text-center col-middle col-xs-height">
+                        <div class="icon-block block-inline">
+                            <i class="fa fa-copyright" aria-hidden="true"></i>
+                        </div>
+                        <div class="block-inline">
+                            2016 SENJU CAFE
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 text-right col-middle col-xs-height">
+                        <div class="icon-block block-inline">
+                            {% trans "СОЦИАЛЬНЫЕ СЕТИ" %}:
+                        </div>
+                        <div class="block-inline">
+                            <a class="vk" href="https://new.vk.com/cafe_senju">
+                                <i class="fa fa-vk" aria-hidden="true" fa-2x>
+                                </i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content-dish">
+                <button type="button" class="close close-dish" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        &times;
+                    </span>
+                </button>
+
+                <div class="container-fluid modal-header-dish">
+                    <div class="row" id="block-content-dish">
+                        <div class="col-md-7 modal-header-dish-image text-center">
+                            <img id="image_dish" src="/media/photo/0-i9rRUfsAyD2bXf9E-_1.jpg" class="img-responsive">
+                        </div>
+                        <div class="col-md-5 modal-header-dish-imformation">
+
+                            <div class="col-md-12 padding-none modal-header-dish-imformation-discription">
+                                <div class="col-md-12 padding-none">
+                                    <h1 id="title_dish" class="text-center"></h1>
+                                </div>
+                                <div class="col-md-12 padding-none">
+                                    <h3 class="text-left">{% trans "Описание" %}</h3>
+                                    <p id="description"></p>
+                                    <p id="description-small"></p>
+                                    <button id="description-small-btn">Далее</button>
+                                </div>
+                                <div class="col-md-12 padding-none">
+                                    <h3 class="text-left">{% trans "Ингредиенты" %}</h3>
+                                    <p id="ingredients_dish"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12 padding-none">
+                                <div class="col-md-6 col-xs-6 col-sm-6 padding-none prev-detail-count">
+                                   <div class="col-md-12 padding-none">
+                                       <div class="col-md-4 col-xs-4 col-sm-4 padding-none">{% trans "Цена" %}:</div>
+                                       <div class="col-md-8 col-xs-8 col-sm-8 padding-none"><span id="price_dish"></span> <span class="rur">a</span></div>
+                                   </div>
+                                   <div class="col-md-12 padding-none">
+                                       <div class="col-md-4 col-xs-4 col-sm-4 padding-none">{% trans "Кол-во" %}:</div>
+                                       <div class="col-md-8 col-xs-8 col-sm-8 padding-none">
+                                            <div class="modal-block_">
+                                                <button id="minus">
+                                                    <i class="fa fa-minus-circle fa-modal" aria-hidden="true"></i>
+                                                </button>
+
+                                                <input onkeypress='if(event.keyCode<48 || event.keyCode > 57)event.returnValue=false' style='margin-left: 10px; margin-right: 10px; width: 35px; text-align:center; border: none; display: inline-block;' id='count_dish' type='text' name='num' min='1' value='1' Disabled>
+
+                                                <button id="plus">
+                                                    <i class="fa fa-plus-circle fa-modal" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                       </div>
+                                   </div>
+                                   <div class="col-md-12 padding-none">
+                                       <div class="col-md-4 col-xs-4 col-sm-4 padding-none">{% trans "Итог" %}:</div>
+                                       <div class="col-md-8 col-xs-8 col-sm-8 padding-none"><span id="result_price_dish"></span> <span class="rur">a</span></div>
+                                   </div>
+                                </div>
+
+                                <div class="col-md-6 col-xs-6 col-sm-6 detail-prev-basket">
+                                    <div class="buy text-center">
+                                        <a href="{% url 'basket:ordering' %}" id="go-to-basket">
+                                            {% trans "Перейти в корзину" %}
+                                             ( <p1 id="fly_basket_popup">0 ₽ </p1> )
+                                        </a>
+
+                                        <button id="add_pop_basket" value="1">
+                                            {% trans "Добавить в корзину" %}
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <i id="load-icon" class="fa fa-spinner fa-pulse fa-3x fa-fw fa-pulse_"></i>
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/fly_basket.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/pop_up_dish.js' %}"></script>
+
+    <script type="text/javascript">
+		{% get_current_language as LANGUAGE_CODE %}
+		{% get_available_languages as LANGUAGES %}
+		{% get_language_info_list for LANGUAGES as languages %}
+
+		if('{{LANGUAGE_CODE}}' != 'ru')
+		{
+			$('#news-block').hide();
+			$('#navigation-item-news').hide();
+		}
+	</script>
+
+
+    <a href="#" class="btn back-to-top btn-light btn-fixed-bottom"> <span class="glyphicon glyphicon-chevron-up"></span> </a>
+
+    <script type="text/javascript" src="{% static 'js/showup.js' %}"></script>
+
+    <script>
+        $().showUp('.navbar', {
+            upClass: 'navbar-show',
+            downClass: 'navbar-hide'
+        });
+    </script>
+
+    <script>
+        var width = $(window).width();
+        $('.back-to-top').css({'left':width - 60});
+
+        window.onresize = function(e)
+        {
+            var width = $(window).width();
+            $('.back-to-top').css({'left':width - 60});
+        }
+    </script>
+</body>
+</html>

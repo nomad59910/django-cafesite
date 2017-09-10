@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+
+{% block include %}
+    <link rel="stylesheet"  href="{% static 'style/index.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/new.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/nav-menu.css' %}">
+{% endblock %}
+
+
+{% block title %}
+    {{new.title}}
+{% endblock %}
+
+
+{% block image %}
+    <div class="block-top-image text-center"  style="background-image: url(/media/main/news.png);">
+        <div class="block-top-image-cell">
+            <div class="block-inline">
+                <div class="block-top-image-cell-information-text">
+                    {% trans "сенджу кафе японской кухни" %}
+                </div>
+                <div>
+                    <div class="head-line_">
+
+                    </div>
+                </div>
+                <div class="block-top-image-cell-category">
+                    {% trans "НОВОСТИ" %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container-fluid new-block">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h2>{{object.title}}</h2>
+            </div>
+            <div class="col-xs-12 text-center">
+                {{object.text | safe}}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block include_js %}
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/lodash.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/nav-menu.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/fly_basket.js' %}"></script>
+{% endblock %}
+
+{% block lang_hide %}
+    <script type="text/javascript">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+
+        if('{{LANGUAGE_CODE}}' != 'ru')
+        {
+            window.location.replace("/");
+        }
+
+    </script>
+{% endblock %}

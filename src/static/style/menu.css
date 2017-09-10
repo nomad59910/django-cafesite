@@ -1,0 +1,246 @@
+.content-dish{
+    width: 100%;
+    min-height: 820px;
+    /*display: table;*/
+    background-color: #f3f3f3;
+    padding-top: 60px;
+    padding-bottom: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+}
+
+
+.content-dish > div{
+    max-width: 1800px;
+    display: inline-block;
+    width: 100%;
+}
+
+.content-dish > div > div{
+    display: table;
+    width: 100%;
+}
+
+.content-dish-filter{
+    width: 320px;
+    padding-right: 10px;
+    min-height: 100px;
+    display: table-cell;
+}
+
+.content-dish-dishs{
+    display: table-cell;
+    vertical-align: top;
+}
+
+.content-dish-filter-block{
+    margin-left: 15px;
+    margin-right: 15px;
+    overflow: hidden;
+}
+
+.content-dish-filter-block-title{
+    padding-top: 10px;
+}
+
+.line-undo-type-or-ingredients{
+    height: 2px;
+    width: 100%;
+    background-color: #3d4c4f;
+    vertical-align: top;
+}
+
+.dish-type, .dish-ingredients{
+    padding-top: 10px;
+}
+
+.dish-type{
+    padding-top: 0px;
+}
+
+.ingredients{
+    display: none;
+}
+
+.title-text{
+    margin-top: 0px;
+}
+
+.move-list{
+    display: block;
+}
+
+
+
+.block-item-dishs{
+    background-color: white;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.prev-name-item-dishs{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.prev-button-item-dishs{
+    background-color: #cd2b25;
+    border: none;
+    color: white;
+    padding: 10px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.only{
+    border: none;
+    display: none;
+    background-color: transparent;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .content-dish, .content-dish-filter, .content-dish-dishs{
+        display: block;
+    }
+
+    .content-dish-filter{
+        width: 100%;
+        display: none;
+    }
+
+    .content-dish-filter-block{
+        margin: 5px 15px;
+        padding: 0px 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .block-item-dish{
+        width: 50%;
+    }
+
+    .prev-button-item-dishs{
+        font-size: 10px;
+    }
+}
+
+
+@media screen and (max-width: 840px) {
+    .prev-button-item-dishs{
+        font-size: 10px;
+    }
+
+    .prev-name-item-dishs{
+        font-size: 12px;
+    }
+}
+
+.top-type, .ingredient-type-label{
+    font-weight: 400;
+    font-size: 18px;
+    margin: 0px;
+}
+
+.up-or-down{
+    cursor:pointer;
+    margin-top: 4px;
+}
+
+.block-ingredient, .block-type-dish{
+    margin: 4px 0px;
+    overflow: hidden;
+}
+
+.fa-chevron-circle-down, .fa-chevron-circle-up{
+    display: block;
+    font-size: 18px;
+}
+
+.ingred{
+    padding-left: 15px;
+    overflow: hidden;
+}
+
+.fa-chevron-circle-up{
+        display: none;
+}
+
+.prev-detail-count{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.fa-pulse{
+    padding: 0px;
+    font-size: 3 0px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.modal-dish-control{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.font-18{
+    font-size: 18px;
+}
+
+.block-type-dish__{
+    padding: 2px 0px;
+}
+
+.block-ingredient_{
+    overflow: hidden;
+    padding: 2px 0px;
+}
+
+.only-hover {
+    display: inline-block;
+}
+
+input[type=checkbox].type-dish,  input[type=checkbox].ingredient_type,  input[type=checkbox].ingredient-type-in{
+                            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+                        }
+
+input[type=checkbox].type-dish + label.top-type, input[type=checkbox].ingredient_type + label.ingredient-type-label,  input[type=checkbox].ingredient-type-in + label.ingredient-type-in-label{
+    padding-left:24px;
+    height:16px;
+    line-height: 18px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    cursor:pointer;
+
+}
+
+input[type=checkbox].type-dish:checked + label.top-type, input[type=checkbox].ingredient_type:checked + label.ingredient-type-label,  input[type=checkbox].ingredient-type-in:checked + label.ingredient-type-in-label{
+    background-position: 0 -16px;
+}
+
+label.top-type, label.ingredient-type-label, label.ingredient-type-in-label{
+    background-image:url(/media/css/check-box.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.content-dish-filter{
+    padding-bottom: 20px;
+}
+
+@media (min-width: 1400px){
+    .block-top-image{
+        background-size: 100%;
+    }
+}

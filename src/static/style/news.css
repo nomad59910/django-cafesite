@@ -1,0 +1,47 @@
+#content{
+    padding-top: 55px;
+}
+
+@media screen and (max-width: 990px) {
+    .text-center-small{
+        text-align: center;
+    }
+}
+
+@media (min-width: 1400px){
+    .block-top-image{
+        background-size: 100%;
+    }
+}
+
+.container-news_{
+    max-width: 1140px;
+}
+
+.news-date_{
+    display: table-cell;
+    width: 120px;
+    vertical-align: top;
+}
+
+.news-date-month{
+    text-align: left;
+    margin: 0px;
+    padding-left: 2px;
+}
+
+.new-text-bottom{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.news-line{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.news-date__{
+    text-align: left;
+    margin: 0px;
+    font-size: 50px;
+}

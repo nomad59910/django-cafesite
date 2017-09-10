@@ -1,0 +1,319 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-10 14:15+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\basket\forms.py:8
+msgid "Имя"
+msgstr "Name"
+
+#: .\basket\forms.py:9
+msgid "Телефон"
+msgstr "Phone"
+
+#: .\basket\forms.py:10
+msgid "Дата"
+msgstr "Date"
+
+#: .\basket\forms.py:11
+msgid "Время"
+msgstr "Time"
+
+#: .\basket\forms.py:13
+msgid "Комментарий"
+msgstr "Comment"
+
+#: .\senjucafe\settings.py:149
+msgid "РУССКИЙ"
+msgstr "RUSSIAN"
+
+#: .\senjucafe\settings.py:150
+msgid "АНГЛИЙСКИЙ"
+msgstr "ENGLISH"
+
+#: .\templates\base.html:40 .\templates\base.html.py:86
+#: .\templates\index.html:92
+msgid "СЕНДЖЮ"
+msgstr "SENJU"
+
+#: .\templates\base.html:46 .\templates\base.html.py:91
+#: .\templates\index.html:114
+msgid "ГЛАВНАЯ"
+msgstr "HOME"
+
+#: .\templates\base.html:49 .\templates\base.html.py:93
+#: .\templates\index.html:115 .\templates\index.html.py:255
+#: .\templates\news\new.html:31 .\templates\news\news.html.py:31
+msgid "НОВОСТИ"
+msgstr "NEWS"
+
+#: .\templates\base.html:52 .\templates\base.html.py:95
+#: .\templates\index.html:116
+msgid "О НАС"
+msgstr "ABOUT"
+
+#: .\templates\base.html:55 .\templates\base.html.py:97
+#: .\templates\index.html:117 .\templates\menu\menu.html.py:46
+msgid "МЕНЮ"
+msgstr "MENU"
+
+#: .\templates\base.html:58 .\templates\base.html.py:99
+#: .\templates\index.html:118
+msgid "КОНТАКТЫ"
+msgstr "CONTACTS"
+
+#: .\templates\base.html:152 .\templates\index.html.py:413
+#: .\templates\index.html:526
+msgid "СОЦИАЛЬНЫЕ СЕТИ"
+msgstr "SOCIAL NETWORKS"
+
+#: .\templates\basket\basket.html:15 .\templates\basket\order_completed.html:13
+msgid "Корзина"
+msgstr "Basket"
+
+#: .\templates\basket\basket.html:23 .\templates\menu\menu.html.py:38
+#: .\templates\news\new.html:23 .\templates\news\news.html.py:23
+msgid "сенджу кафе японской кухни"
+msgstr "senju japanese cuisine cafe"
+
+#: .\templates\basket\basket.html:31
+msgid "КОРЗИНА"
+msgstr "BASKET"
+
+#: .\templates\basket\basket.html:47 .\templates\basket\basket.html.py:145
+msgid "Оформить заказ"
+msgstr "Checkout"
+
+#: .\templates\basket\basket.html:135 .\templates\index.html.py:595
+#: .\templates\menu\menu.html:188
+msgid "Итог"
+msgstr "Result"
+
+#: .\templates\basket\basket.html:141
+msgid "Назад в Меню"
+msgstr "Back to Menu"
+
+#: .\templates\basket\basket.html:172
+msgid "Ваш заказ оформлен."
+msgstr "Your order is issued."
+
+#: .\templates\basket\basket.html:188 .\templates\basket\basket.html.py:229
+msgid "Название"
+msgstr "Name"
+
+#: .\templates\basket\basket.html:192 .\templates\basket\basket.html.py:236
+#: .\templates\index.html:575 .\templates\menu\menu.html.py:168
+msgid "Цена"
+msgstr "Price"
+
+#: .\templates\basket\basket.html:196 .\templates\basket\basket.html.py:242
+#: .\templates\index.html:579 .\templates\menu\menu.html.py:172
+msgid "Кол-во"
+msgstr "Count"
+
+#: .\templates\basket\basket.html:200 .\templates\basket\basket.html.py:248
+msgid "Стоимость"
+msgstr "Cost"
+
+#: .\templates\basket\basket.html:207
+msgid "Удалить"
+msgstr "Delete"
+
+#: .\templates\basket\order_completed.html:22
+msgid "Ваш заказ оформлен!"
+msgstr "Your order is issued."
+
+#: .\templates\basket\order_completed.html:25
+msgid "Вернуться на главную страницу."
+msgstr "Back to the main page."
+
+#: .\templates\index.html:11
+msgid "Сенджю кафе японской кухни"
+msgstr "Senju Japanese cuisine cafe"
+
+#: .\templates\index.html:72
+msgid "ВАШ ЗАКАЗ"
+msgstr "CART"
+
+#: .\templates\index.html:89
+msgid "кафе японской кухни"
+msgstr "japanese cuisine cafe"
+
+#: .\templates\index.html:138
+msgid "ПЕРЕЙТИ В МЕНЮ"
+msgstr "GO TO MENU"
+
+#: .\templates\index.html:175
+msgid "БЛЮДА"
+msgstr "OUR FOOD"
+
+#: .\templates\index.html:201 .\templates\index.html.py:608
+#: .\templates\menu\menu.html:201 .\templates\menu\menu.html.py:231
+msgid "Добавить в корзину"
+msgstr "Add to basket"
+
+#: .\templates\index.html:217
+msgid "СМОТРЕТЬ ВСЕ БЛЮДА"
+msgstr "SEE ALL DISH"
+
+#: .\templates\index.html:228
+msgid "O НАС"
+msgstr "ABOUT US"
+
+#: .\templates\index.html:239
+msgid ""
+"Как известно, истинных ценителей восточной кухни мало.  Именно истинных! А "
+"не просто любителей роллов и суши.  Дабы привить вкус в настоящей домашней "
+"японской кухне,мы рады предоставить наш богатый ассортмент. Естественно, "
+"сколько людей - столько и мненией, а соответственно и вкусов. Однако, разные "
+"мнения помогут выбрать для себя что-то свое и тем самым не дадут заблудиться "
+"во вкусовой гамме и разнообразии блюд!"
+msgstr ""
+"As is known , the true connoisseurs of Oriental cuisine is not enough. "
+"That's true ! And not just fans of rolls and sushi . In order to instill a "
+"taste of home in this Japanese cuisine , we are pleased to provide our rich "
+"assortment . Of course, how many people - so many opinions , and thus the "
+"flavors . However , different opinions will help to choose something for "
+"themselvesthen his , and thus will not get lost in the flavor range and "
+"variety of dishes !"
+
+#: .\templates\index.html:288 .\templates\index.html.py:319
+#: .\templates\index.html:347 .\templates\news\news.html.py:72
+#: .\templates\news\news.html:78
+msgid "Читать далее"
+msgstr "Read more"
+
+#: .\templates\index.html:366
+msgid "Извините, но сейчас новостей нет."
+msgstr "Sorry, but for now there is no news."
+
+#: .\templates\index.html:383 .\templates\index.html.py:429
+msgid "Режим работы"
+msgstr "Cafe Mode"
+
+#: .\templates\index.html:385
+msgid "Понедельник ~ Суббота: 12:00-22:00"
+msgstr "Monday ~ Friday: 12: 00-22: 00"
+
+#: .\templates\index.html:386
+#, fuzzy
+#| msgid "Воскресенье: ВЫХОДНОЙ"
+msgid "Воскресение: ВЫХОДНОЙ"
+msgstr "Sunday is a day off"
+
+#: .\templates\index.html:403 .\templates\index.html.py:471
+msgid "Медицинская ул.10Б, Йошкар-Ола"
+msgstr "Medical ul.10B , Yoshkar - Ola"
+
+#: .\templates\index.html:434
+msgid "Пн"
+msgstr "Mon"
+
+#: .\templates\index.html:437
+msgid "Вт"
+msgstr "Tue"
+
+#: .\templates\index.html:440
+msgid "Ср"
+msgstr "Wed"
+
+#: .\templates\index.html:443
+msgid "Чт"
+msgstr "Thu"
+
+#: .\templates\index.html:448
+msgid "Пт"
+msgstr "Fri"
+
+#: .\templates\index.html:451
+msgid "Сб"
+msgstr "Sat"
+
+#: .\templates\index.html:454
+msgid "Вс"
+msgstr "Sun"
+
+#: .\templates\index.html:455
+msgid "Выходной"
+msgstr "Closed"
+
+#: .\templates\index.html:562 .\templates\menu\menu.html.py:155
+msgid "Описание"
+msgstr "Description"
+
+#: .\templates\index.html:568 .\templates\menu\menu.html.py:88
+#: .\templates\menu\menu.html:161
+msgid "Ингредиенты"
+msgstr "Ingredients"
+
+#: .\templates\index.html:603 .\templates\menu\menu.html.py:196
+msgid "Перейти в корзину"
+msgstr "Go to basket"
+
+#: .\templates\menu\menu.html:16
+msgid "Меню"
+msgstr "Menu"
+
+#: .\templates\menu\menu.html:63
+msgid "Типы блюд"
+msgstr "Types of food"
+
+#: .\templates\menu\menu.html:77
+msgid "только"
+msgstr "only"
+
+#~ msgid "Не правильный формат."
+#~ msgstr "Not the correct format."
+
+#~ msgid "ЯЗЫК: "
+#~ msgstr "LANGUAGE: "
+
+#~ msgid "Сумма"
+#~ msgstr "Sum"
+
+#~ msgid "СОЦИАЛЬНЫЕ СЕТИ:"
+#~ msgstr "SOCIAL NETWORKS:"
+
+#~ msgid "Наверх"
+#~ msgstr "Up"
+
+#~ msgid "ВЫДЕЛИТЬ ВСЕ"
+#~ msgstr "SELECT ALL"
+
+#~ msgid "СНЯТЬ ВЫДЕЛЕНИЕ"
+#~ msgstr "REMOVE SELECTION"
+
+#~ msgid "Ваша корзина пуста."
+#~ msgstr "Your basket is empty."
+
+#~ msgid "Итог: "
+#~ msgstr "Result:"
+
+#~ msgid "Иегридиенты"
+#~ msgstr "Ingredients"
+
+#~ msgid "Стоимость: "
+#~ msgstr "Cost: "
+
+#~ msgid "Применить фильтр"
+#~ msgstr "Apply filter"
+
+#~ msgid "Ингедиенты"
+#~ msgstr "Ingredients"
+
+#~ msgid "Новости"
+#~ msgstr "News"

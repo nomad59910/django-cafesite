@@ -1,0 +1,13 @@
+.futer{
+    bottom: 0px;
+    position: absolute;
+}
+
+.container-futer{
+    max-width: 1100px;
+    padding-bottom: 20px;
+}
+
+.text-order-completed{
+    padding-top: 40vh;
+}

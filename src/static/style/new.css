@@ -1,0 +1,26 @@
+img{
+    max-width: 100%;
+    height: auto !important;
+}
+
+@media (min-width: 1400px){
+    .block-top-image{
+        background-size: 100%;
+    }
+}
+
+.new-block{
+    max-width: 1040px;
+    padding-top: 30px;
+    padding-bottom: 55px;
+}
+
+body{
+    min-height: 100vh;
+    position:relative;
+}
+
+.futer{
+    position:absolute;
+    bottom:0;
+}

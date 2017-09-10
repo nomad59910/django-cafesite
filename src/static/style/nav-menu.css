@@ -1,0 +1,213 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+}
+
+/* Modal Content */
+.modal-content {
+    height: 100%;
+    position: fixed;
+    background-color: #fefefe;
+    width: 370px;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    margin: 0px;
+    border: 0px;
+    animation-duration: 0.4s;
+    border-radius: 0px;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+    from {left: -300px; opacity: 0}
+    to {left: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+    from {left: -300px; opacity: 0}
+    to {left: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+/* The Close Button */
+.close {
+    color: #111;
+    float: right;
+    font-size: 60px;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    color: #111;
+    border: 0px;
+}
+
+.modal-navigation-item{
+    display: block;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-size: 14px;
+    font-weight: bold;
+    color:#3d4c4f;
+}
+
+.modal-navigation-line{
+    margin-left: 18px;
+    margin-right: 18px;
+}
+
+.modal-header-title{
+    font-size: 38px;
+    font-weight: bold;
+    padding-top: 10px;
+    letter-spacing: 3px;
+    padding-left: 10px;
+}
+
+.top-header-title{
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    padding-left: 20px;
+    display: table-cell;
+    color: #3d4c4f;
+}
+
+.mvp-fly-but-wrap span:nth-child(1),
+.mvp-fly-but-wrap span:nth-child(2),
+.mvp-fly-but-wrap span:nth-child(3)
+{
+    height: 3px;
+    transition: .25s ease-in-out;
+    background-color: #444;
+    display: block;
+}
+
+.mvp-fly-but-wrap span:nth-child(1) {
+    width: 25px;
+    margin-bottom: 5px;
+}
+
+.mvp-fly-but-wrap span:nth-child(2) {
+    width: 22px;
+    margin-bottom: 5px;
+}
+
+.mvp-fly-but-wrap span:nth-child(3) {
+    width: 16px;
+}
+
+.test-class span:nth-child(3), .test-class span:nth-child(1), .test-class span:nth-child(2){
+    width: 0px;
+}
+
+.mvp-fly-but-wrap{
+    cursor: pointer;
+    width: 30px;
+}
+
+.item-lang{
+    display: table-cell;
+    padding-right: 10px;
+    color: #3d4c4f !important;
+}
+
+@media screen and (max-width: 430px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 455px) {
+    .top-header-title{
+        display: none;
+    }
+
+    .item-lang{
+        display: none;
+    }
+
+    .top-nav-right-block{
+        width: 50%;
+    }
+
+    .top-nav-left-block{
+        width: 50%;
+    }
+
+}
+
+#fly_basket{
+    font-weight: bold;
+}
+
+@media screen and (min-width: 825px) {
+    .top-nav-left-block{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 825px) {
+    .nav-top-menu{
+        display: none;
+    }
+
+}
+
+.navigation-item{
+    padding-top: 4px;
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    color:#3d4c4f;
+}
+
+.modal-select-lang{
+    padding-top: 24px;
+    padding-left: 18px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.modal-lang{
+    padding-left: 10px;
+}
+
+.fly_baske_block_{
+    padding-top: 2px;
+}

@@ -1,0 +1,23 @@
+#content{
+    min-height: 200px;
+}
+
+.row-same-height_{
+    height: 45px;
+}
+
+.table-cell{
+    display: table-cell;
+}
+
+.cart-block{
+    color: #3d4c4f;
+}
+
+.head-line_{
+    height: 3px;
+    width: 150px;
+    background-color:white;
+    display: inline-block;
+    margin: 10px;
+}

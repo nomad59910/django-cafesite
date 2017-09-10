@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+
+{% block include %}
+    <link rel="stylesheet"  href="{% static 'style/index.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/nav-menu.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/order_completed.css' %}">
+{% endblock %}
+
+{% block title %}
+    {% trans "Корзина" %}
+{% endblock %}
+
+{% block image %}
+{% endblock %}
+
+{% block content %}
+    <div id="basket-content" class="text-center">
+        <h3 class="text-order-completed">
+            {% trans "Ваш заказ оформлен!" %}
+            
+            <a href="{% url 'index' %}">
+                {% trans "Вернуться на главную страницу." %}
+            </a>
+        </h3>
+    </div>
+
+    <div class="container-fluid container-futer">
+
+    </div>
+
+{% endblock %}
+
+{% block include_js %}
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/fly_basket.js' %}"></script>
+{% endblock %}

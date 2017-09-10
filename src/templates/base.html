@@ -1,0 +1,213 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="{% static 'style/showup.css' %}">
+    <link rel="stylesheet"  href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet"  href="{% static 'font-awesome/css/font-awesome.css' %}">
+    <link rel="stylesheet"  href="{% static 'style/hover.css' %}" media="all">
+    <link rel="stylesheet"  href="{% static 'style/base.css' %}" media="all">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+
+    {% block include %}
+    {% endblock %}
+</head>
+<body>
+
+{% block navigation %}
+    <div class="container-fluid top-nav-block">
+        <div class="row">
+            <div class="row-same-height row-same-height_">
+                <div class="col-md-9 col-xs-8 text-left col-middle col-xs-height top-nav-left-block">
+                    <div class="col-middle table-cell">
+                        <div class="col-middle">
+                            <div id="myBtn" class="mvp-fly-but-wrap">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="{% url 'index' %}" class="col-middle top-header-title">
+                        {% trans "СЕНДЖЮ" %}
+                    </a>
+                </div>
+
+                <div class="col-md-9 col-xs-8 text-left col-middle col-xs-height nav-top-menu">
+                    <div class="col-middle table-cell">
+                        <a class="navigation-item" href="{% url 'index' %}">{% trans "ГЛАВНАЯ" %}</a>
+                    </div>
+                    <div class="col-middle table-cell">
+                        <a class="navigation-item" id="navigation-item-news" href="{% url 'news:article-list' %}">{% trans "НОВОСТИ" %}</a>
+                    </div>
+                    <div class="col-middle table-cell">
+                        <a class="navigation-item" href="{% url 'index' %}#about">{% trans "О НАС" %}</a>
+                    </div>
+                    <div class="col-middle table-cell">
+                        <a class="navigation-item" href="{% url 'menu:menu' %}">{% trans "МЕНЮ" %}</a>
+                    </div>
+                    <div class="col-middle table-cell">
+                        <a class="navigation-item" href="{% url 'index' %}#connection_and_map">{% trans "КОНТАКТЫ" %}</a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-md-4 text-right col-middle col-xs-height top-nav-right-block">
+                    <a class="cart-block cart-block_" href="{% url 'basket:ordering' %}">
+                        <div class="icon-block block-inline"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+
+                        <div class="text-block block-inline fly_baske_block_">
+                            <div class="head-top-block-cart-div-table-cart">
+                                <p1 id="fly_basket"></p1>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">×</span>
+                <div class="modal-header-title">
+                    {% trans "СЕНДЖЮ" %}
+                </div>
+            </div>
+
+            <div class="modal-content-content">
+                <a class="modal-navigation-item" href="{% url 'index' %}">{% trans "ГЛАВНАЯ" %}</a>
+                <hr class="modal-navigation-line">
+                <a class="modal-navigation-item" id="navigation-item-news" href="{% url 'news:article-list' %}">{% trans "НОВОСТИ" %}</a>
+                <hr class="modal-navigation-line">
+                <a class="modal-navigation-item" href="{% url 'index'%}#about">{% trans "О НАС" %}</a>
+                <hr class="modal-navigation-line">
+                <a class="modal-navigation-item" href="{% url 'menu:menu' %}">{% trans "МЕНЮ" %}</a>
+                <hr class="modal-navigation-line">
+                <a class="modal-navigation-item" href="{% url 'index' %}#connection_and_map">{% trans "КОНТАКТЫ" %}</a>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+    {% block image %}
+    {% endblock %}
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    {% block futer %}
+        <div class="container-fluid futer">
+            <div class="container-fluid visible-xs-block visible-sm-block">
+                <div class="row">
+                    <div class="row-same-height row-top">
+                        <div class="col-md-12 text-center col-middle col-xs-height">
+                            <div class="icon-block block-inline">
+                                <i class="fa fa-copyright" aria-hidden="true"></i>
+                            </div>
+                            <div class="block-inline">
+                                2016 SENJU CAFE
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid visible-md-block visible-lg-block">
+                <div class="row">
+                    <div class="row-same-height row-top">
+                        <div class="col-md-4 col-xs-4 text-left col-middle col-xs-height">
+                            <div class="icon-block block-inline">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </div>
+                            <div class="text-block block-inline">8 (836) 232-58-86</div>
+                        </div>
+
+                        <div class="col-md-4 col-xs-4 text-center col-middle col-xs-height">
+                            <div class="icon-block block-inline">
+                                <i class="fa fa-copyright" aria-hidden="true"></i>
+                            </div>
+                            <div class="block-inline">
+                                2016 SENJU CAFE
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-xs-4 text-right col-middle col-xs-height">
+                            <div class="icon-block block-inline">
+                                {% trans "СОЦИАЛЬНЫЕ СЕТИ" %}:
+                            </div>
+                            <div class="block-inline">
+                                <a class="vk" href="https://new.vk.com/cafe_senju">
+                                    <i class="fa fa-vk" aria-hidden="true" fa-2x>
+                                    </i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block include_js %}
+    {% endblock %}
+
+
+    {% block lang_hide %}
+        <script type="text/javascript">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+
+            if('{{LANGUAGE_CODE}}' != 'ru')
+            {
+                $('#navigation-item-news').hide();
+            }
+
+        </script>
+    {% endblock %}
+
+
+    <!-- Back-to-top Example -->
+    <a href="#" class="btn back-to-top btn-light btn-fixed-bottom"> <span class="glyphicon glyphicon-chevron-up"></span> </a>
+
+    <script>
+        var width = $(window).width();
+        $('.back-to-top').css({'left':width - 60});
+
+
+        window.onresize = function(e)
+        {
+            {% block block_onresize %}
+            {% endblock %}
+
+            var width = $(window).width();
+            $('.back-to-top').css({'left':width - 60});
+        }
+    </script>
+
+    <script type="text/javascript" src="{% static 'js/showup.js' %}"></script>
+    <!-- Showup Plugin -->
+    <script>
+      $().showUp('.navbar', {
+        upClass: 'navbar-show',
+        downClass: 'navbar-hide'
+      });
+    </script>
+</body>
+</html>
